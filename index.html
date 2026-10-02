@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaiyang Li</title>
+<meta name="description" content="Kaiyang Li — Ph.D. student in Computer Science and Engineering at the University of Connecticut. Parameter-efficient fine-tuning, model merging, audio-language models.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfbf9;
+    --text: #1f2328;
+    --muted: #5b636d;
+    --rule: #e3e3de;
+    --accent: #0b5cad;
+    --accent-soft: #e8f0fa;
+    --badge: #a4361f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15171a;
+      --text: #e6e6e3;
+      --muted: #9aa3ad;
+      --rule: #2c3035;
+      --accent: #6fa8ea;
+      --accent-soft: #1d2a3a;
+      --badge: #e48a6f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15171a;
+    --text: #e6e6e3;
+    --muted: #9aa3ad;
+    --rule: #2c3035;
+    --accent: #6fa8ea;
+    --accent-soft: #1d2a3a;
+    --badge: #e48a6f;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 860px; margin: 0 auto; padding: 56px 16px 72px; }
+
+  header.intro {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .avatar {
+    width: 200px; height: 250px; border-radius: 6px;
+    object-fit: cover;
+    background: var(--accent-soft);
+    display: block;
+  }
+  .avatar-fallback {
+    width: 200px; height: 250px; border-radius: 6px;
+    background: var(--accent-soft); color: var(--accent);
+    display: none; align-items: center; justify-content: center;
+    font: 600 56px/1 "Source Serif 4", Georgia, serif;
+  }
+  h1 {
+    font: 600 2.4rem/1.15 "Source Serif 4", Georgia, serif;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .role { color: var(--muted); margin: 0 0 14px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-weight: 500; font-size: 0.95rem; }
+
+  section { margin-top: 48px; }
+  h2 {
+    font: 600 1.35rem/1.3 "Source Serif 4", Georgia, serif;
+    margin: 0 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin: 0 0 12px; }
+
+  .news { list-style: none; padding: 0; margin: 0; }
+  .news li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 4px 0; }
+  .news .date { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.92rem; padding-top: 1px; }
+
+  .pub { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .pub:last-child { border-bottom: 0; }
+  .pub-title { font-weight: 600; margin-bottom: 2px; }
+  .pub-authors { color: var(--muted); font-size: 0.95rem; }
+  .pub-authors .me { color: var(--text); font-weight: 600; }
+  .pub-venue { font-size: 0.95rem; margin-top: 2px; }
+  .pub-venue em { font-style: normal; font-weight: 500; }
+  .tag {
+    display: inline-block; font-size: 0.78rem; font-weight: 600;
+    color: var(--badge); border: 1px solid currentColor; border-radius: 4px;
+    padding: 0 6px; margin-left: 6px; vertical-align: 1px;
+  }
+  .pub-links { margin-top: 4px; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .pub-note { font-size: 0.93rem; margin-top: 6px; color: var(--muted); }
+  .poster { display: block; margin-top: 12px; max-width: 520px; }
+  .poster img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 6px;
+  }
+
+  .entry { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .entry + .entry, .entry-block + .entry-block { margin-top: 14px; }
+  .entry .when { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 0.95rem; }
+  .entry-block ul { margin: 6px 0 0; padding-left: 20px; }
+  .entry-block li { margin: 3px 0; }
+  .sub { color: var(--muted); font-size: 0.95rem; }
+
+  ul.plain { margin: 0; padding-left: 20px; }
+  ul.plain li { margin: 3px 0; }
+
+  footer { margin-top: 56px; color: var(--muted); font-size: 0.85rem; }
+
+  @media (max-width: 640px) {
+    main { padding-top: 32px; }
+    header.intro { grid-template-columns: 1fr; gap: 20px; justify-items: start; }
+    .avatar, .avatar-fallback { width: 160px; height: 200px; }
+    .avatar-fallback { font-size: 42px; }
+    h1 { font-size: 2rem; }
+    .news li { grid-template-columns: 1fr; gap: 0; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="intro">
+    <div>
+      <img class="avatar" src="images/avatar.jpg" alt="Kaiyang Li"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="avatar-fallback" aria-hidden="true">KL</div>
+    </div>
+    <div>
+      <h1>Kaiyang Li</h1>
+      <p class="role">Ph.D. Student, Computer Science and Engineering<br>University of Connecticut</p>
+      <div class="links">
+        <a href="mailto:kaiyang.li@uconn.edu">Email</a>
+        <a href="CV_Kaiyang_Li.pdf">CV</a>
+        <a href="https://scholar.google.com/citations?user=XpasPA8AAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://github.com/KaiyangLi1992">GitHub</a>
+        <a href="https://www.linkedin.com/in/kaiyang-li-5103ab37a">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am a Ph.D. student in Computer Science and Engineering at the University of Connecticut.
+      My research focuses on efficient adaptation of large models: parameter-efficient fine-tuning,
+      model merging, and compact audio-language models.
+    </p>
+    <p>
+      Before UConn, I worked as an Applied Scientist at Tencent Music Entertainment Group.
+    </p>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news">
+      <li><span class="date">2026</span><span>Received the Marion and Frederick Buckman Engineering Fellowship, UConn School of Computing.</span></li>
+      <li><span class="date">Summer 2026</span><span>Research intern at <a href="https://www.nec-labs.com/">NEC Laboratories America</a> (Optical Networking &amp; Sensing), building the Mizar family of compact audio-language models.</span></li>
+      <li><span class="date">Sep 2026</span><span><a href="https://arxiv.org/abs/2609.28344">Mizar</a> and <a href="https://arxiv.org/abs/2609.28778">RT-OPD</a> submitted to ICASSP 2027; models released in the <a href="https://huggingface.co/collections/KaiyangLi/mizar-audio-language-model-family-6aa96a97630d4868ab979b4d">Mizar collection</a> on Hugging Face.</span></li>
+      <li><span class="date">Sep 2026</span><span><a href="https://arxiv.org/abs/2605.12843">ReForge</a> submitted to ICLR 2027.</span></li>
+      <li><span class="date">2025</span><span><a href="https://arxiv.org/abs/2506.00799">Uni-LoRA</a> accepted to NeurIPS 2025 as a <strong>Spotlight</strong>, and integrated into <a href="https://huggingface.co/docs/peft/main/en/package_reference/unilora">Hugging Face PEFT</a>. Received the NeurIPS 2025 Scholar Award.</span></li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Selected Publications</h2>
+    <p class="sub">Full list on <a href="https://scholar.google.com/citations?user=XpasPA8AAAAJ&amp;hl=en">Google Scholar</a>.</p>
+
+    <div class="pub">
+      <div class="pub-title">Uni-LoRA: One Vector is All You Need</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Qing Su, Wei Li, Zhipeng Cai, Shihao Ji</div>
+      <div class="pub-venue"><em>NeurIPS 2025</em><span class="tag">Spotlight · top 3.19%</span></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2506.00799">Paper</a>
+        <a href="https://github.com/KaiyangLi1992/Uni-LoRA">Code</a>
+        <a href="https://huggingface.co/docs/peft/main/en/package_reference/unilora">Hugging Face PEFT</a>
+        <a href="https://neurips.cc/media/neurips-2025/Slides/116600.pdf">Poster</a>
+        <a href="https://neurips.cc/virtual/2025/poster/116600">NeurIPS Page</a>
+      </div>
+      <div class="pub-note">Reconstructs all LoRA parameters from a single shared vector through an isometric projection, tuning 0.0061% of base-model parameters while matching or beating strong LoRA variants. Officially supported in <a href="https://huggingface.co/docs/peft/main/en/package_reference/unilora">Hugging Face PEFT</a>.</div>
+      <a class="poster" href="https://neurips.cc/media/neurips-2025/Slides/116600.pdf">
+        <img src="images/unilora_poster.jpg" alt="Uni-LoRA NeurIPS 2025 poster" loading="lazy">
+      </a>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">ReForge: Refining Merged Models with Anchor-Regularized Regression</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Qing Su, Shihao Ji</div>
+      <div class="pub-venue">Submitted to <em>ICLR 2027</em></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2605.12843">Paper</a>
+      </div>
+      <div class="pub-note">A bilevel framework that refines strong merged models module by module: Bayesian linear regression with an anchor-centered prior gives a closed-form update from unlabeled calibration activations, and Bayesian optimization tunes it per module. Works as a plug-and-play refinement on top of existing merging methods.</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Mizar: A 159M-Parameter Audio-Language Model for Audio Understanding</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Yue Tian, Shihao Ji</div>
+      <div class="pub-venue">Submitted to <em>ICASSP 2027</em></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2609.28344">Paper</a>
+        <a href="https://github.com/KaiyangLi1992/Mizar_159M">Code</a>
+        <a href="https://huggingface.co/KaiyangLi/Mizar-159M">Model</a>
+      </div>
+      <div class="pub-note">State of the art among sub-200M audio-language models, raising the 3-benchmark average from 37.5 to 45.7 with fewer parameters and less compute than the previous best.</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Reward-Tilted On-Policy Distillation for Acoustic Grounding in Audio-Language Models</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Yue Tian, Shihao Ji</div>
+      <div class="pub-venue">Submitted to <em>ICASSP 2027</em></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2609.28778">Paper</a>
+        <a href="https://github.com/KaiyangLi1992/RT-OPD">Code</a>
+        <a href="https://huggingface.co/KaiyangLi/Mizar-3B">Model</a>
+      </div>
+      <div class="pub-note">RT-OPD strengthens acoustic grounding in on-policy distillation so compact audio-language models rely on audio evidence rather than textual shortcuts. The resulting Mizar-3B reaches 74.7 on MMAU Test-Mini.</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Seed-free Graph De-anonymization with Adversarial Learning</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Guoming Lu, Guangchun Luo, Zhipeng Cai</div>
+      <div class="pub-venue"><em>CIKM 2020</em></div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Adversarial Privacy-preserving Graph Embedding against Inference Attack</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Guangchun Luo, Yang Ye, Wei Li, Shihao Ji, Zhipeng Cai</div>
+      <div class="pub-venue"><em>IEEE Internet of Things Journal</em>, 2020</div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="entry-block">
+      <div class="entry">
+        <span><strong>NEC Laboratories America</strong> — Research Intern, Optical Networking &amp; Sensing</span>
+        <span class="when">Summer 2026</span>
+      </div>
+      <div class="sub">Mentor: Shaobo Han</div>
+      <ul>
+        <li><strong>Mizar Reasoning (3B):</strong> 74.7 on MMAU Test-Mini, state of the art among 3B audio-language models and on par with a 7B model, trained on 10K examples in about one hour.</li>
+        <li><strong>Mizar Thinking (160M):</strong> state of the art among sub-200M audio-language models, raising the 3-benchmark average from 37.5 to 45.7 with fewer parameters and less compute than the previous best.</li>
+      </ul>
+    </div>
+
+    <div class="entry-block">
+      <div class="entry">
+        <span><strong>Tencent Music Entertainment Group</strong> — Applied Scientist</span>
+        <span class="when">Sep 2021 – Jul 2022</span>
+      </div>
+      <ul>
+        <li>Hit-song prediction from large-scale user behavior and audio features.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entry"><span><strong>University of Connecticut</strong> — Ph.D. student, Computer Science and Engineering</span><span class="when">2025 – present</span></div>
+    <div class="entry"><span><strong>University of Electronic Science and Technology of China</strong> — M.S., Electrical Engineering</span><span class="when">2016</span></div>
+    <div class="entry"><span><strong>University of Electronic Science and Technology of China</strong> — B.S., Communication Engineering</span><span class="when">2013</span></div>
+  </section>
+
+  <section id="service">
+    <h2>Honors &amp; Service</h2>
+    <ul class="plain">
+      <li>Marion and Frederick Buckman Engineering Fellowship, UConn School of Computing, 2026</li>
+      <li>NeurIPS 2025 Scholar Award</li>
+      <li>Reviewer: NeurIPS, ICLR, ICASSP, CIKM, IEEE IoT-J, IEEE TCSS, IEEE TIFS, HCC, EAAI, JIIS, AI Review, Cluster Computing</li>
+    </ul>
+  </section>
+
+  <footer>Last updated October 2026</footer>
+</main>
+</body>
+</html>
