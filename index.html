@@ -159,8 +159,13 @@
     <p>
       I am a Ph.D. student in Computer Science and Engineering at the University of Connecticut,
       advised by <a href="https://sji.soc.uconn.edu/">Prof. Shihao Ji</a>.
-      My research focuses on efficient adaptation of large models: parameter-efficient fine-tuning,
+      My research focuses on making large models more efficient to adapt and deploy: parameter-efficient fine-tuning,
       model merging, and compact audio-language models.
+    </p>
+    <p>
+      My work includes Uni-LoRA (NeurIPS 2025 Spotlight), now integrated into
+      <a href="https://huggingface.co/docs/peft/main/en/package_reference/unilora">Hugging Face PEFT</a>,
+      and the Mizar family of compact audio-language models, developed during my research internship at NEC Laboratories America.
     </p>
     <p>
       Before UConn, I worked as an Applied Scientist at Tencent Music Entertainment Group.
@@ -174,7 +179,7 @@
       <li><span class="date">Sep 2026</span><span><a href="https://arxiv.org/abs/2605.12843">ReForge</a> submitted to ICLR 2027.</span></li>
       <li><span class="date">Summer 2026</span><span>Research intern at <a href="https://www.nec-labs.com/">NEC Laboratories America</a> (Optical Networking &amp; Sensing), building the Mizar family of compact audio-language models.</span></li>
       <li><span class="date">2026</span><span>Received the Marion and Frederick Buckman Engineering Fellowship, UConn School of Computing.</span></li>
-      <li><span class="date">2025</span><span><a href="https://arxiv.org/abs/2506.00799">Uni-LoRA</a> accepted to NeurIPS 2025 as a <strong>Spotlight</strong>, and integrated into <a href="https://huggingface.co/docs/peft/main/en/package_reference/unilora">Hugging Face PEFT</a>. Received the NeurIPS 2025 Scholar Award.</span></li>
+      <li><span class="date">2025</span><span><a href="https://arxiv.org/abs/2506.00799">Uni-LoRA</a> accepted to NeurIPS 2025 as a <strong>Spotlight</strong>. Received the NeurIPS 2025 Scholar Award.</span></li>
     </ul>
   </section>
 
@@ -185,7 +190,7 @@
     <div class="pub">
       <div class="pub-title">Uni-LoRA: One Vector is All You Need</div>
       <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Qing Su, Wei Li, Zhipeng Cai, Shihao Ji</div>
-      <div class="pub-venue"><em>NeurIPS 2025</em><span class="tag">Spotlight · top 3.19%</span></div>
+      <div class="pub-venue"><em>NeurIPS 2025</em><span class="tag">Spotlight</span></div>
       <div class="pub-links">
         <a href="https://arxiv.org/abs/2506.00799">Paper</a>
         <a href="https://github.com/kaiyangli-ml/Uni-LoRA">Code</a>
@@ -193,7 +198,7 @@
         <a href="https://neurips.cc/media/neurips-2025/Slides/116600.pdf">Poster</a>
         <a href="https://neurips.cc/virtual/2025/poster/116600">NeurIPS Page</a>
       </div>
-      <div class="pub-note">Reconstructs all LoRA parameters from a single shared vector through an isometric projection, tuning 0.0061% of base-model parameters while matching or beating strong LoRA variants. Officially supported in <a href="https://huggingface.co/docs/peft/main/en/package_reference/unilora">Hugging Face PEFT</a>.</div>
+      <div class="pub-note">Reconstructs LoRA adapters from a single shared vector via an isometric projection. On Gemma-7B, achieves 75.59% on GSM8K while tuning 0.52M parameters (0.0061% of the base model). <a href="https://github.com/huggingface/peft/pull/3257">Integrated into Hugging Face PEFT</a>.</div>
       <a class="poster" href="https://neurips.cc/media/neurips-2025/Slides/116600.pdf">
         <img src="images/unilora_poster.jpg" alt="Uni-LoRA NeurIPS 2025 poster" loading="lazy">
       </a>
@@ -206,7 +211,7 @@
       <div class="pub-links">
         <a href="https://arxiv.org/abs/2605.12843">Paper</a>
       </div>
-      <div class="pub-note">A bilevel framework that refines strong merged models module by module: Bayesian linear regression with an anchor-centered prior gives a closed-form update from unlabeled calibration activations, and Bayesian optimization tunes it per module. Works as a plug-and-play refinement on top of existing merging methods.</div>
+      <div class="pub-note">Training-free refinement through closed-form, anchor-regularized updates and validation-guided hyperparameter search, evaluated on vision and Llama-based expert merging. In the data-assisted eight-task ViT-L/14 setting, one merged model reaches 95.1% average accuracy, close to the eight individual experts' 95.8%.</div>
     </div>
 
     <div class="pub">
@@ -218,7 +223,7 @@
         <a href="https://github.com/kaiyangli-ml/Mizar_159M">Code</a>
         <a href="https://huggingface.co/KaiyangLi/Mizar-159M">Model</a>
       </div>
-      <div class="pub-note">State of the art among sub-200M audio-language models, raising the 3-benchmark average from 37.5 to 45.7 with fewer parameters and less compute than the previous best.</div>
+      <div class="pub-note">State of the art among the evaluated sub-200M audio-language models: 52.92% on MMAU-9k with 159.3M parameters, above Google's Gemma 3n E2B (~5B total / 2B effective) and OpenAI's GPT-4o mini Audio (size undisclosed) in the paper's comparison. The paper reports a 43.78% mean across MMAU-9k, MMAR, and ADQA-clean. Results average five post-training seeds sharing one Stage 1/2 initializer.</div>
     </div>
 
     <div class="pub">
@@ -228,9 +233,9 @@
       <div class="pub-links">
         <a href="https://arxiv.org/abs/2609.28778">Paper</a>
         <a href="https://github.com/kaiyangli-ml/RT-OPD">Code</a>
-        <a href="https://huggingface.co/KaiyangLi/Mizar-3B">Model</a>
+        <a href="https://huggingface.co/KaiyangLi/Mizar-3B">LoRA Adapter</a>
       </div>
-      <div class="pub-note">RT-OPD strengthens acoustic grounding in on-policy distillation so compact audio-language models rely on audio evidence rather than textual shortcuts. The resulting Mizar-3B reaches 74.7 on MMAU Test-Mini.</div>
+      <div class="pub-note">Uses audio-present/absent teacher predictions to strengthen acoustic grounding during on-policy distillation. Mizar-3B reaches 72.72% on MMAU-9k (five-seed mean), state of the art among the evaluated 3B models and above Alibaba's Qwen2.5-Omni (7B language backbone) and NVIDIA's Audio Flamingo 3 (7B language backbone) in the paper's reported comparison.</div>
     </div>
 
     <div class="pub">
@@ -263,8 +268,8 @@
       </div>
       <div class="sub">Mentor: Shaobo Han</div>
       <ul>
-        <li><strong>Mizar Reasoning (3B):</strong> 74.7 on MMAU Test-Mini, state of the art among 3B audio-language models and on par with a 7B model, trained on 10K examples in about one hour.</li>
-        <li><strong>Mizar Thinking (160M):</strong> state of the art among sub-200M audio-language models, raising the 3-benchmark average from 37.5 to 45.7 with fewer parameters and less compute than the previous best.</li>
+        <li><strong>RT-OPD / Mizar-3B:</strong> Developed audio-grounded on-policy distillation and released training code and a LoRA adapter. The paper reports 72.72% MMAU-9k accuracy after post-training on 10K examples (five-seed mean).</li>
+        <li><strong>Mizar-159M:</strong> Built a 159.3M-parameter audio-language model with a compact mapper and three-stage training. Measured 1.09 s mean full-answer latency on 100 MMAU questions (AMD EPYC 7542, four CPU threads, FP32, batch size 1).</li>
       </ul>
     </div>
 
