@@ -205,6 +205,26 @@
     </div>
 
     <div class="pub">
+      <div class="pub-title">Large-scale Model Merging via Recovery-aware Task Weighting</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Boming Chen, Martin Renqiang Min, Shihao Ji</div>
+      <div class="pub-venue">Submitted to <em>CVPR 2027</em></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2611.33315">Paper</a>
+      </div>
+      <div class="pub-note">Re-merges experts with larger weights on tasks the initial merged model retains poorly, measured by validation samples the expert gets right but the merged model gets wrong. Introduces CLIPMerge-100, a 100-task benchmark on CLIP ViT-L/14 and ViT-B/32. Across eleven merging methods with 20, 50, and 100 tasks, RaTW improves both mean accuracy and worst-20% task retention in all 33 ViT-L/14 settings and 32 of 33 ViT-B/32 settings.</div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Change Partners at Every Layer: Balanced Random Regrouping for Model Merging</div>
+      <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Shihao Ji</div>
+      <div class="pub-venue">Submitted to <em>CVPR 2027</em></div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2611.33308">Paper</a>
+      </div>
+      <div class="pub-note">When experts are merged in groups, randomly reassigning group partners at every layer beats keeping the same partners or grouping similar experts. Balanced Random Regrouping outperforms reusing one grouping across layers in all 24 CLIP settings by 1.0&ndash;6.8 points, with a first-order analysis explaining why per-layer feature shifts add up less when partners change.</div>
+    </div>
+
+    <div class="pub">
       <div class="pub-title">ReForge: Refining Merged Models with Anchor-Regularized Regression</div>
       <div class="pub-authors"><span class="me">Kaiyang Li</span>, Shaobo Han, Qing Su, Shihao Ji</div>
       <div class="pub-venue">Submitted to <em>ICLR 2027</em></div>
